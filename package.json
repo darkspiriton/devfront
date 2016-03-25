@@ -1,0 +1,34 @@
+{
+  "name": "devfront-profile",
+  "version": "0.0.1",
+  "description": "Profile of Cesar Moreno",
+  "main": "gulpfile.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darkspiriton/devfront.git"
+  },
+  "author": "Cesar Moreno",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darkspiriton/devfront/issues"
+  },
+  "homepage": "https://github.com/darkspiriton/devfront#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-@": "^1.5.3",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-jade-inheritance": "^0.5.5",
+    "gulp-live-server": "0.0.29",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-stylus": "^2.3.1"
+  }
+}
