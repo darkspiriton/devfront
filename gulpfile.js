@@ -23,7 +23,7 @@ gulp.task('css', function () {
   gulp.src(paths.styles + '/main.styl')
       .pipe(stylus({compress: false, paths: [paths.styles]}))
       .pipe(autoprefixer())
-      .pipe(minifyCSS())
+      //.pipe(minifyCSS())
       .pipe(rename('style.css'))
       .pipe(gulp.dest(paths.css))
 });
