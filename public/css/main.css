@@ -53,6 +53,21 @@ p {
           align-content: center;
   margin: 0;
 }
+.Profile__nombre {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
 body {
   -webkit-box-align: center;
   -webkit-align-items: center;
