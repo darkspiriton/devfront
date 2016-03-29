@@ -21,9 +21,9 @@ gulp.task('default', ['css', 'html', 'mainjs','maincss']);
 
 gulp.task('css', function () {
   gulp.src(paths.styles + '/main.styl')
-      .pipe(stylus({compress: false, paths: [paths.styles]}))
+      .pipe(stylus({compress: true, paths: [paths.styles]}))
       .pipe(autoprefixer())
-      //.pipe(minifyCSS())
+      .pipe(minifyCSS())
       .pipe(rename('style.css'))
       .pipe(gulp.dest(paths.css))
 });
@@ -31,7 +31,7 @@ gulp.task('css', function () {
 gulp.task('html', function() {
   var YOUR_LOCALS = {};
   gulp.src('./lib/profile/*.jade')
-      .pipe(jade({pretty: true}))
+      .pipe(jade({pretty: false}))
       .pipe(gulp.dest('./public/'))
 });
 

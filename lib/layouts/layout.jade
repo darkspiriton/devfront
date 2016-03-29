@@ -4,12 +4,12 @@ html(lang="es")
     include ./head.jade
   body
     header
-      //include ../components/picture/picture.jade    
-      include ./header.jade    
+      block header
+      include ./header.jade
     aside
       block aside
-    section      
+    section
       block section
-    footer    
+    footer
       include ./footer.jade
     block script
