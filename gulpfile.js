@@ -31,7 +31,7 @@ gulp.task('css', function () {
 gulp.task('html', function() {
   var YOUR_LOCALS = {};
   gulp.src('./lib/profile/*.jade')
-      .pipe(jade({pretty: false}))
+      .pipe(jade({pretty: true}))
       .pipe(gulp.dest('./public/'))
 });
 
@@ -67,7 +67,7 @@ gulp.task('img', function() {
 gulp.task('serve', function() {
   var server = gls.static('public', 8000);
   server.start();
-  gulp.watch(['public/**/*.css', 'public/**/*.html'], function (file) {
+  gulp.watch(['public/**/*.css', 'public/**/*.html','public/js/*.js'], function (file) {
   server.notify.apply(server, [file]);
   });
   gulp.watch(paths.styles + '/**/*.styl', ['css','maincss']);

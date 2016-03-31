@@ -2,13 +2,13 @@ doctype html
 html(lang="es")
   head
     include ./head.jade
-  body
+  body(ng-app="profile")
     header
       block header
       include ./header.jade
     aside
       block aside
-    section
+    section(ng-controller="appController as data")
       block section
     footer
       include ./footer.jade
