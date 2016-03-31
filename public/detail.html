@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>DevFront: Cesar Moreno</title>
+    <meta name="description" content="Profile - Cesar">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="./img/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://devfront.info/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://devfront.info/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://devfront.info/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://devfront.info/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://devfront.info/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://devfront.info/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://devfront.info/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://devfront.info/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://devfront.info/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://devfront.info/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="https://devfront.info/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://devfront.info/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="https://devfront.info/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="https://devfront.info/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="https://devfront.info/manifest.json">
+    <link rel="mask-icon" href="https://devfront.info/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="https://devfront.info/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo+2:800|Lobster" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="./js/app.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+  </head>
+  <body ng-app="profile">
+    <header>
+    </header>
+    <aside>
+    </aside>
+    <section ng-controller="appController as data">
+      <div ng-controller="TabsController as tabs">
+        <ul class="nav nav-tabs nav-justified">
+          <li ng-class="{active : tabs.tab === 1}"><a ng-click="tabs.selectTab(1)">Tab1</a></li>
+          <li ng-class="{active : tabs.tab === 2}"><a ng-click="tabs.selectTab(2)">Tab2</a></li>
+          <li ng-class="{active : tabs.tab === 3}"><a ng-click="tabs.selectTab(3)">Tab3</a></li>
+          <li ng-class="{active : tabs.tab === 4}"><a ng-click="tabs.selectTab(4)">Tab4</a></li>
+        </ul>
+        <div ng-show="tabs.tab === 1" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos libero vitae quo repellat nobis doloribus soluta amet quaerat accusantium? Quod est sed at officia, magni veritatis doloribus ullam molestiae delectus! 1</span></div>
+        <div ng-show="tabs.tab === 2" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aliquam nostrum quae odio facere quos alias odit adipisci deleniti, culpa a cupiditate corporis doloribus quidem. Error deserunt quos porro, impedit! 2</span></div>
+        <div ng-show="tabs.tab === 3" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aspernatur nam saepe expedita cupiditate reprehenderit id sequi quisquam esse velit. Reprehenderit fugit iste sunt, deserunt voluptatum eaque vel quisquam consequuntur? 3</span></div>
+        <div ng-show="tabs.tab === 4" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic delectus sit perspiciatis deserunt fugiat, culpa veniam quae distinctio quisquam ullam! Quas excepturi nobis rerum accusantium tempora sapiente eaque non optio. 4</span></div>
+        <form class="form-horizontal">
+          <fieldset>
+            <legend>Comentarios</legend>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="text" placeholder="Email" class="form-control">
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Password" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Comentario</label>
+                <textarea name="" cols="30" rows="10" class="form-control"></textarea>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                  <button type="reset" class="btn btn-default">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+    <footer></footer>
+  </body>
+</html>
