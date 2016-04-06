@@ -2,7 +2,7 @@ extends  ../layouts/layout.jade
 block head
   link(rel="stylesheet", href="./css/bootstrap.min.css")
 block section
-  div(ng-controller="TabsController as tabs")
+  div(ng-controller="TabsController as tabs" class="tabs")
     ul(class="nav nav-tabs nav-justified")
       li(ng-class="{active : tabs.tab === 1}")
         a(ng-click="tabs.selectTab(1)") Tab1
@@ -22,19 +22,33 @@ block section
     div(class="tab-content" ng-show="tabs.tab === 4")
       span  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic delectus sit perspiciatis deserunt fugiat, culpa veniam quae distinctio quisquam ullam! Quas excepturi nobis rerum accusantium tempora sapiente eaque non optio. 4
 
-    form(class="form-horizontal")
-      fieldset
-        legend Comentarios
-        div(class="form-group")
-          label Email
-          input(type="text" class="form-control" placeholder="Email")
-          div(class="form-group")
-            label Password
-            input(type="password" class="form-control" placeholder="Password")
-          div(class="form-group")
-            label Comentario
-            textarea(class="form-control" name="", cols="30", rows="10")
-          div(class="form-group")
-            div(class="col-lg-10 col-lg-offset-2")
-              button(type="reset" class="btn btn-default") Cancelar
-              button(type="submit" class="btn btn-primary") Enviar
+  
+  div(ng-controller="CommentsController as cmtsCtrl" class="comments")
+    button(ng-hide="cmtsCtrl.show" ng-click="cmtsCtrl.toggle()" class="btn btn-primary") Show Comments 
+      span(class="badge") {{cmtsCtrl.comments.length}}
+    form(name="commentsForm" ng-show="cmtsCtrl.show" class="form-vertical" ng-submit="commentsForm.$valid && cmtsCtrl.addComment()" novalidate)           
+      legend Comentarios
+      div(class="form-group")
+        label Email
+        input(ng-disabled="cmtsCtrl.comment.anonimo" ng-model="cmtsCtrl.comment.email" type="email" class="form-control" placeholder="Email" ng-required="!cmtsCtrl.comment.anonimo")
+        input(ng-model="cmtsCtrl.comment.anonimo" type="checkbox" ng-change="cmtsCtrl.anonimoChanged()")
+        label Anonimo
+      div(class="form-group")
+        label Comentario
+        textarea(ng-model="cmtsCtrl.comment.body" class="form-control" cols="30" rows="10" required)
+      div(class="form-group")
+        div(class="col-lg-10 col-lg-offset-2")
+          button(ng-click="cmtsCtrl.toggle()" type="reset" class="btn btn-default") Cancelar
+          button(type="submit" class="btn btn-primary") Enviar
+      blockquote(ng-repeat="comment in cmtsCtrl.comments")
+        h5 {{comment.body}}
+        footer Comment by 
+          a(ng-if="!comment.anonimo" href="mailto:{{comment.email}}")  {{comment.email}} 
+          span(ng-if="!comment.anonimo") on {{comment.date | date : 'medium'}}          
+          em(ng-if="comment.anonimo") Anonimo 
+            span on {{comment.date | date : 'medium'}} 
+      div(ng-if="!commentsForm.$valid" class="alert alert-danger") Formulario invalido
+
+block script
+  script(src="js/controller.js")
+  script(src="js/app.js")

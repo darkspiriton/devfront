@@ -37,43 +37,47 @@
     </header>
     <aside>
     </aside>
-    <section ng-controller="appController as data">
-      <div ng-controller="TabsController as tabs">
-        <ul class="nav nav-tabs nav-justified">
-          <li ng-class="{active : tabs.tab === 1}"><a ng-click="tabs.selectTab(1)">Tab1</a></li>
-          <li ng-class="{active : tabs.tab === 2}"><a ng-click="tabs.selectTab(2)">Tab2</a></li>
-          <li ng-class="{active : tabs.tab === 3}"><a ng-click="tabs.selectTab(3)">Tab3</a></li>
-          <li ng-class="{active : tabs.tab === 4}"><a ng-click="tabs.selectTab(4)">Tab4</a></li>
-        </ul>
-        <div ng-show="tabs.tab === 1" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos libero vitae quo repellat nobis doloribus soluta amet quaerat accusantium? Quod est sed at officia, magni veritatis doloribus ullam molestiae delectus! 1</span></div>
-        <div ng-show="tabs.tab === 2" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aliquam nostrum quae odio facere quos alias odit adipisci deleniti, culpa a cupiditate corporis doloribus quidem. Error deserunt quos porro, impedit! 2</span></div>
-        <div ng-show="tabs.tab === 3" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aspernatur nam saepe expedita cupiditate reprehenderit id sequi quisquam esse velit. Reprehenderit fugit iste sunt, deserunt voluptatum eaque vel quisquam consequuntur? 3</span></div>
-        <div ng-show="tabs.tab === 4" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic delectus sit perspiciatis deserunt fugiat, culpa veniam quae distinctio quisquam ullam! Quas excepturi nobis rerum accusantium tempora sapiente eaque non optio. 4</span></div>
-        <form class="form-horizontal">
-          <fieldset>
-            <legend>Comentarios</legend>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="text" placeholder="Email" class="form-control">
-              <div class="form-group">
-                <label>Password</label>
-                <input type="password" placeholder="Password" class="form-control">
-              </div>
-              <div class="form-group">
-                <label>Comentario</label>
-                <textarea name="" cols="30" rows="10" class="form-control"></textarea>
-              </div>
-              <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
-                  <button type="reset" class="btn btn-default">Cancelar</button>
-                  <button type="submit" class="btn btn-primary">Enviar</button>
-                </div>
-              </div>
-            </div>
-          </fieldset>
-        </form>
-      </div>
-    </section>
+    <div ng-controller="TabsController as tabs" class="tabs">
+      <ul class="nav nav-tabs nav-justified">
+        <li ng-class="{active : tabs.tab === 1}"><a ng-click="tabs.selectTab(1)">Tab1</a></li>
+        <li ng-class="{active : tabs.tab === 2}"><a ng-click="tabs.selectTab(2)">Tab2</a></li>
+        <li ng-class="{active : tabs.tab === 3}"><a ng-click="tabs.selectTab(3)">Tab3</a></li>
+        <li ng-class="{active : tabs.tab === 4}"><a ng-click="tabs.selectTab(4)">Tab4</a></li>
+      </ul>
+      <div ng-show="tabs.tab === 1" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos libero vitae quo repellat nobis doloribus soluta amet quaerat accusantium? Quod est sed at officia, magni veritatis doloribus ullam molestiae delectus! 1</span></div>
+      <div ng-show="tabs.tab === 2" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aliquam nostrum quae odio facere quos alias odit adipisci deleniti, culpa a cupiditate corporis doloribus quidem. Error deserunt quos porro, impedit! 2</span></div>
+      <div ng-show="tabs.tab === 3" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aspernatur nam saepe expedita cupiditate reprehenderit id sequi quisquam esse velit. Reprehenderit fugit iste sunt, deserunt voluptatum eaque vel quisquam consequuntur? 3</span></div>
+      <div ng-show="tabs.tab === 4" class="tab-content"><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic delectus sit perspiciatis deserunt fugiat, culpa veniam quae distinctio quisquam ullam! Quas excepturi nobis rerum accusantium tempora sapiente eaque non optio. 4</span></div>
+    </div>
+    <div ng-controller="CommentsController as cmtsCtrl" class="comments">
+      <button ng-hide="cmtsCtrl.show" ng-click="cmtsCtrl.toggle()" class="btn btn-primary">Show Comments <span class="badge">{{cmtsCtrl.comments.length}}</span></button>
+      <form name="commentsForm" ng-show="cmtsCtrl.show" ng-submit="commentsForm.$valid &amp;&amp; cmtsCtrl.addComment()" novalidate class="form-vertical">          
+        <legend>Comentarios</legend>
+        <div class="form-group">
+          <label>Email</label>
+          <input ng-disabled="cmtsCtrl.comment.anonimo" ng-model="cmtsCtrl.comment.email" type="email" placeholder="Email" ng-required="!cmtsCtrl.comment.anonimo" class="form-control">
+          <input ng-model="cmtsCtrl.comment.anonimo" type="checkbox" ng-change="cmtsCtrl.anonimoChanged()">
+          <label>Anonimo</label>
+        </div>
+        <div class="form-group">
+          <label>Comentario</label>
+          <textarea ng-model="cmtsCtrl.comment.body" cols="30" rows="10" required class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button ng-click="cmtsCtrl.toggle()" type="reset" class="btn btn-default">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </div>
+        <blockquote ng-repeat="comment in cmtsCtrl.comments">
+          <h5>{{comment.body}}</h5>
+          <footer>Comment by <a ng-if="!comment.anonimo" href="mailto:{{comment.email}}"> {{comment.email}} </a><span ng-if="!comment.anonimo">on {{comment.date | date : 'medium'}}          </span><em ng-if="comment.anonimo">Anonimo <span>on {{comment.date | date : 'medium'}} </span></em></footer>
+        </blockquote>
+        <div ng-if="!commentsForm.$valid" class="alert alert-danger">Formulario invalido</div>
+      </form>
+    </div>
     <footer></footer>
+    <script src="js/controller.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>

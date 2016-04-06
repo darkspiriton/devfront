@@ -2,11 +2,12 @@ extends ../layouts/layout.jade
 block header
   //include ./components/picture/picture.jade
 block section
-  h1 DevFront
-  p En construcción
-  //p {{data.user.name}}
-  //p {{data.user.email}}
-  p(class="language" ng-repeat="language in data.user.languages") {{language}}
-block script
-  script(src="./js/plugins.js")
-  script(src="./js/main.js")
+  section(ng-controller="appController as data")
+    h1 DevFront
+    p En construcción
+    //p {{data.user.name}}
+    //p {{data.user.email}}
+    p(class="language" ng-repeat="language in data.user.languages") {{language}}
+  block script
+    script(src="./js/plugins.js")
+    script(src="./js/main.js")
