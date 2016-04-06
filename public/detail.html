@@ -73,8 +73,8 @@
           <h5>{{comment.body}}</h5>
           <footer>Comment by <a ng-if="!comment.anonimo" href="mailto:{{comment.email}}"> {{comment.email}} </a><span ng-if="!comment.anonimo">on {{comment.date | date : 'medium'}}          </span><em ng-if="comment.anonimo">Anonimo <span>on {{comment.date | date : 'medium'}} </span></em></footer>
         </blockquote>
-        <div ng-if="!commentsForm.$valid" class="alert alert-danger">Formulario invalido</div>
       </form>
+      <div ng-if="!commentsForm.$valid" class="alert alert-danger">Formulario invalido</div>
     </div>
     <footer></footer>
     <script src="js/controller.js"></script>

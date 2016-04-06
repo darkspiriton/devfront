@@ -47,7 +47,7 @@ block section
           span(ng-if="!comment.anonimo") on {{comment.date | date : 'medium'}}          
           em(ng-if="comment.anonimo") Anonimo 
             span on {{comment.date | date : 'medium'}} 
-      div(ng-if="!commentsForm.$valid" class="alert alert-danger") Formulario invalido
+    div(ng-if="!commentsForm.$valid" class="alert alert-danger") Formulario invalido
 
 block script
   script(src="js/controller.js")
